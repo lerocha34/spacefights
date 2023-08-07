@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Space Fights</title>
+</head>
+
+<body>
+    <header>
+        <div class="title-space">
+            <div class="title">Space Fights</div>
+            <div class="hero-choice">Escolha seu Herói</div>
+        </div>
+    </header>
+    <section class="heroes">
+        <div class="hero-template">
+            <div class="hero-title marine">Marine</div>
+            <div class="hero-image marine"><img src="images/marine.png"></div>
+            <div class="hero-status marine">
+                <div class="hero-status-title marine">Características</div>
+                <div class="hero-advantages marine">Dano ignora metade da armadura</div>
+                <div class="hero-health-damage marine">
+                    <div class="hero-feature">Vida: <span class="health-number">100</span></div>
+                    <div class="hero-health-damage marine">
+                        <div class="hero-feature">Dano: <span class="damage-number">10 + 1d6</span></div>
+                    </div>
+                    <div class="hero-health-damage marine">
+                        <div class="hero-armor">Armadura: <span class="armor-number">50</span></div>
+                        <button class="hero-button marine-button">Escolher!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-template">
+            <div class="hero-title magician">Magician</div>
+            <div class="hero-image magician"><img src="images/magician.png"></div>
+            <div class="hero-status magician">
+                <div class="hero-status-title magician">Características</div>
+                <div class="hero-advantages magician">Pode causar dano duplo</div>
+                <div class="hero-health-damage magician">
+                    <div class="hero-feature">Vida: <span class="health-number">60</span></div>
+                    <div class="hero-health-damage magician">
+                        <div class="hero-feature">Dano: <span class="damage-number">13 + 1d4</span></div>
+                    </div>
+                    <div class="hero-health-damage magician">
+                        <div class="hero-armor">Armadura: <span class="armor-number">20</span></div>
+                        <button class="hero-button magician-button">Escolher!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-template">
+            <div class="hero-title warrior">Warrior</div>
+            <div class="hero-image warrior"><img src="images/warrior.png"></div>
+            <div class="hero-status warrior">
+                <div class="hero-status-title warrior">Características</div>
+                <div class="hero-advantages warrior">Recupera vida quando perto da morte</div>
+                <div class="hero-health-damage warrior">
+                    <div class="hero-feature">Vida: <span class="health-number">120</span></div>
+                    <div class="hero-health-damage warrior">
+                        <div class="hero-feature">Dano: <span class="damage-number">15 + 1d8</span></div>
+                    </div>
+                    <div class="hero-health-damage warrior">
+                        <div class="hero-armor">Armadura: <span class="armor-number">65</span></div>
+                        <button class="hero-button warrior-button">Escolher!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="versus">
+        <div class="versus-title">Escolha o Adversário</div>
+    </div>
+    <section class="heroes">
+        <div class="hero-template monsters">
+            <div class="hero-title naga">Naga</div>
+            <div class="hero-image naga"><img src="images/naga.png"></div>
+            <div class="hero-status naga">
+                <div class="hero-status-title naga">Características</div>
+                <div class="hero-health-damage naga">
+                    <div class="hero-feature">Vida: <span class="health-number">150</span></div>
+                    <div class="hero-health-damage naga">
+                        <div class="hero-feature">Dano: <span class="damage-number">10 + 1d4</span></div>
+                    </div>
+                    <div class="hero-health-damage naga">
+                        <div class="hero-armor">Armadura: <span class="armor-number">10</span></div>
+                        <button class="hero-button naga-button">Escolher!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-template monsters">
+            <div class="hero-title skullmage">Skull Mage</div>
+            <div class="hero-image skullmage"><img src="images/skullmage.png"></div>
+            <div class="hero-status skullmage">
+                <div class="hero-status-title skullmage">Características</div>
+                <div class="hero-advantages magician">Pode absorver metade do dano</div>
+                <div class="hero-health-damage skullmage">
+                    <div class="hero-feature">Vida: <span class="health-number">200</span></div>
+                    <div class="hero-health-damage skullmage">
+                        <div class="hero-feature">Dano: <span class="damage-number">15 + 1d6</span></div>
+                    </div>
+                    <div class="hero-health-damage skullmage">
+                        <div class="hero-armor">Armadura: <span class="armor-number">30</span></div>
+                        <button class="hero-button skullmage-button">Escolher!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-template monsters">
+            <div class="hero-title mutantshark">Mutant Shark</div>
+            <div class="hero-image mutantshark"><img src="images/mutantshark.png"></div>
+            <div class="hero-status mutantshark">
+                <div class="hero-status-title mutantshark">Características</div>
+                <div class="hero-health-damage mutantshark">
+                    <div class="hero-feature">Vida: <span class="health-number">350</span></div>
+                    <div class="hero-health-damage mutantshark">
+                        <div class="hero-feature">Dano: <span class="damage-number">18 + 1d10</span></div>
+                    </div>
+                    <div class="hero-health-damage mutantshark">
+                        <div class="hero-armor">Armadura: <span class="armor-number">50</span></div>
+                        <button class="hero-button mutantshark-button">Escolher!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="battle-area">
+       <div class="hero-choice">
+         <div class="health-bar">
+            <div class="health-now hero-bar"></div>
+        </div> 
+        <div class="chosen-hero">
+        </div>
+        <button class="on-attack">Atacar</button></div>
+        <ul class="battle-log"></ul>
+        <div class="hero-choice monster-choice">
+            <div class="health-bar health-monster">
+                <div class="health-now health-now-monster"></div>
+        <div class="chosen-enemy"></div>
+        </div> </div>
+    </section>
+    <footer>
+        <div class="copyrights">Desenvolvido por Leandro Rocha</div>
+    </footer>
+
+
+
+
+
+    <script src="js/classes.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
