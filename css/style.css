@@ -171,7 +171,8 @@ border:1px dotted #999;
 width:55%;
 height:200px;
 overflow-y: scroll;
-display:none;
+display:None;
+
     
 }
 

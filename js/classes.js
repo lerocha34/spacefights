@@ -25,7 +25,7 @@ class marine extends character{
     super('Marine');
     this.life = 100;
     this.maxLife = 100;
-    this.attack = 10;
+    this.attack = 45;
     this.defense = 50;
 
 }
@@ -38,7 +38,7 @@ class magician extends character{
     super('Magician');
     this.life = 60;
     this.maxLife = 60;
-    this.attack = 13;
+    this.attack = 60;
     this.defense = 20;
 
 }
@@ -51,7 +51,7 @@ class warrior extends character{
     super('Warrior');
     this.life = 120;
     this.maxLife = 120;
-    this.attack = 15;
+    this.attack = 75;
     this.defense = 65;
 
 }
@@ -65,8 +65,8 @@ class naga extends character{
     super('Naga');
     this.life = 150;
     this.maxLife = 150;
-    this.attack = 10;
-    this.defense = 10;
+    this.attack = 40;
+    this.defense = 25;
     }
 }
 var nagaCharacter = new naga();
@@ -77,8 +77,8 @@ class skullmage extends character{
     super('Skull Mage');
     this.life = 200;
     this.maxLife = 200;
-    this.attack = 15;
-    this.defense = 30;
+    this.attack = 55;
+    this.defense = 60;
     }
 }
 
@@ -89,34 +89,11 @@ class mutantshark extends character{
     super('Mutant Shark');
     this.life = 350;
     this.maxLife = 350;
-    this.attack = 18;
-    this.defense = 50;
+    this.attack = 70;
+    this.defense = 80;
     }
 }
 var mutantSharkCharacter = new mutantshark();
 
 let hero = new character();
 let monster = new character();
-
-//criado o sistema de combate
-class stage{
-    constructor(hero, monster, heroEl, monsterEl){
-        this.hero = hero;
-        this.monster = monster;
-        this.heroEl = heroEl;
-        this.monsterEl = monsterEl;
-    }
-    
-    start(){
-        this.update()
-
-    }
-    
-    update(){
-        //Hero
-        let heroLifePct = (this.hero.life / this.hero.maxLife) * 100;
-        this.heroEl.querySelector('.hero-choice .health-bar .health-now').style.width = `${heroLifePct}%`;
-
-        //monster
-    }
-}
