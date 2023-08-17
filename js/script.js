@@ -6,6 +6,8 @@ let heroChosen = false;
 let monsterChosen = false;
 var selectedHero = 1;
 var selectedMonster = 1;
+var gameSituation = 1;
+let heroDamage = 0;
 
 
 //seleção de herois
@@ -24,8 +26,10 @@ function choseMarine() {
     heroChosen = true;
     selectedHero = 1;
     checkCombatLog();
-    updateHealthBar();
-    ignoreArmor();
+    choseHeroStats();
+    updateHeroLife();
+   
+
 
 
 }
@@ -43,8 +47,10 @@ function choseMagician() {
     heroChosen = true;
     selectedHero = 2;
     checkCombatLog();
-    updateHealthBar();
-    doubleDamage();
+    choseHeroStats();
+    updateHeroLife();
+   
+
 
 
 }
@@ -59,8 +65,10 @@ function choseWarrior() {
     heroChosen = true;
     selectedHero = 3;
     checkCombatLog();
-    updateHealthBar();
-    secondWind();
+    choseHeroStats();
+    updateHeroLife();
+   
+
         
 
 }
@@ -83,7 +91,10 @@ function choseNaga() {
     monsterChosen = true;
     selectedMonster = 1;
     checkCombatLog();
-    updateHealthBar();
+    choseHeroStats();
+    updateHeroLife();
+   
+    
 }
 function choseSkullMage() {
     let skullMageChosen = document.querySelector('.chosen-enemy');
@@ -94,7 +105,9 @@ function choseSkullMage() {
     monsterChosen = true;
     selectedMonster = 2;
     checkCombatLog();
-    updateHealthBar();
+    choseHeroStats();
+    updateHeroLife();
+   
 }
 function choseMutantShark() {
     let mutantSharkChosen = document.querySelector('.chosen-enemy');
@@ -105,7 +118,9 @@ function choseMutantShark() {
     monsterChosen = true;
     selectedMonster = 3;
     checkCombatLog();
-    updateHealthBar();
+    choseHeroStats();
+    updateHeroLife();
+   
 }
 let nagaSelected = document.querySelector('.naga-button');
 nagaSelected.addEventListener('click', choseNaga);
@@ -120,6 +135,13 @@ function checkCombatLog() {
         combatLog()
     }
 }
+
+function scrollToBottomLog() {
+    let logContainer = document.querySelector('.battle-log');
+    logContainer.scrollTop = logContainer.scrollHeight;
+}
+    
+
 function combatLog() {
     let logShow = document.querySelector('.battle-log');
     logShow.style.display = 'inline';
@@ -129,8 +151,10 @@ function combatLog() {
     heroLifeBar.style.display = 'inline';
     let monsterLifeBar = document.querySelector('.health-monster');
     monsterLifeBar.style.display = 'inline';
+    
 
 }
+
 
 //FEATURES DO SISTEMA
 //rolador de dados
@@ -146,141 +170,126 @@ let defensefactor = (Math.random() * 2).toFixed(2);
 
 
 //sistema de ataque
-function attacking() {
-    let attackFactor = (Math.random() * 2).toFixed(2);
 
-    let defensefactor = (Math.random() * 2).toFixed(2);
-    let heroAttackDamage = hero.attack * attackFactor;
-    let monsterAttackDamage = monster.attack * attackFactor;
-    let heroDefense = hero.defense * defensefactor;
-    let monsterDefense = monster.defense * defensefactor;
+
+function attacking() {
+    let randomFactor = (Math.random() * 2).toFixed(2);
+    let heroAttackDamage = hero.attack * randomFactor;
+    let monsterAttackDamage = monster.attack * randomFactor;
+    let heroDefense = hero.defense * randomFactor;
+    let monsterDefense = monster.defense * randomFactor;
     let heroDamage = heroAttackDamage - monsterDefense;
     let monsterDamage = monsterAttackDamage - heroDefense;
     let updateLog = document.querySelector('.battle-log');
-    secondWind();
     
-    if (heroDamage <= 0) {
+    
+    if (heroDamage <= 0 && gameSituation == 1) {
         updateLog.innerHTML += `<li>${monster.name} defendeu</li>`
-    } else if (heroDamage > 0) {
+    } else if (heroDamage > 0 && gameSituation == 1) {
         monster.life = monster.life - heroDamage;
-        updateLog.innerHTML += `<li>${hero.name} deu ${heroDamage.toFixed(0)} de dano em ${monster.name}, o HP total é de ${monster .life}</li>`
-
+        updateLog.innerHTML += `<li>${hero.name} deu ${heroDamage.toFixed(1)} de dano em ${monster.name}.</li>`
+        updateHeroLife();
+        scrollToBottomLog();
+        
+        
     }
 
-    if (monsterDamage <= 0) {
+    if (monsterDamage <= 0 && gameSituation == 1) {
         
         updateLog.innerHTML += `<li>${hero.name} defendeu</li>`
-    } else if (monsterDamage > 0) {
+    } else if (monsterDamage > 0 && gameSituation == 1) {
         hero.life = hero.life - monsterDamage;
-        updateLog.innerHTML += `<li>${monster.name} deu ${monsterDamage.toFixed(0)} de dano em ${hero.name} o hp total é de ${hero.life}</li>`
+        updateLog.innerHTML += `<li>${monster.name} deu ${monsterDamage.toFixed(1)} de dano em ${hero.name}.</li>`
+        updateHeroLife();
+        scrollToBottomLog();
+       
     }
 
-
+    if (hero.life <= 0){
+        updateLog.innerHTML += `<li>${hero.name} está morto</li>`;
+        gameSituation = 2;
+    } else if (monster.life <= 0){
+        updateLog.innerHTML += `<li>${monster.name} está morto </li>`;
+        gameSituation = 2;
+    }
 }
 
 document.querySelector('.on-attack').addEventListener('click', attacking)
 
-//FEATURES DAS CLASSES
-//Marine - ignore half armor
-function ignoreArmor() {
-    monster.defense = monster.defense / 2
-}
-
-//Magician - double damage chance
-
-function doubleDamage() {
-    let randomValue = rolarDados(1, 10)
-    if (randomValue <= 2) {
-        heroDamage = heroDamage * 2;
-        combatLog.innerHTML += "Dano Duplo!"
-    }
-}
-// warrior - second wind
-
-function secondWind() {
-    if (hero.life < (hero.maxLife * 0.20) && (selectedHero === 3)) {
-        let healingPercentage = 0.10;
-        let maxHealing = hero.maxLife * healingPercentage;
-        let randomHealing = rolarDados(1, maxHealing);
-        
-        hero.life += randomHealing;
-        
-        updateLog.innerHTML = `<li>Você recuperou ${randomHealing.toFixed(0)} de vida.</li>`;
-    }
-}
 
 
 
 //O heroi selecionado 
-function updateHealthBar() {
+function choseHeroStats() {
     switch (selectedHero) {
         case 1:
-            document.querySelector('.health-now-hero').style.width = `${(marineCharacter.life * 100) / marineCharacter.maxLife}%`
-            document.querySelector('.numbered-life').innerHTML = `${marineCharacter.life} / ${marineCharacter.maxLife}`
+            
             hero.name = 'Marine'
             hero.life = marineCharacter.life;
             hero.maxLife = marineCharacter.maxLife;
             hero.attack = marineCharacter.attack;
             hero.defense = marineCharacter.defense;
-            ignoreArmor();
+            
             break;
 
         case 2:
-            document.querySelector('.health-now-hero').style.width = `${(magicianCharacter.life * 100) / magicianCharacter.maxLife}%`;
-            document.querySelector('.numbered-life').innerHTML = `${magicianCharacter.life} / ${magicianCharacter.maxLife}`
+            
             hero.name = 'Magician'
             hero.life = magicianCharacter.life;
             hero.maxLife = magicianCharacter.maxLife;
             hero.attack = magicianCharacter.attack;
             hero.defense = magicianCharacter.defense;
-            doubleDamage()
+            
             break;
         case 3:
-            document.querySelector('.health-now-hero').style.width = `${(warriorCharacter.life * 100) / warriorCharacter.maxLife}%`;
-            document.querySelector('.numbered-life').innerHTML = `${warriorCharacter.life} / ${warriorCharacter.maxLife}`
+           
             hero.name = 'Warrior'
             hero.life = warriorCharacter.life;
             hero.maxLife = warriorCharacter.maxLife;
             hero.attack = warriorCharacter.attack;
             hero.defense = warriorCharacter.defense;
-            secondWind()
+            
             break;
 
     }
     switch (selectedMonster) {
         case 1:
-            document.querySelector('.health-now-monster').style.width = `${(nagaCharacter.life * 100) / nagaCharacter.maxLife}%`;
-            document.querySelector('.monster-choice .numbered-life').innerHTML = `${nagaCharacter.life}/ ${nagaCharacter.maxLife}`
+            
             monster.name = 'Naga'
             monster.life = nagaCharacter.life;
             monster.maxLife = nagaCharacter.maxLife;
             monster.attack = nagaCharacter.attack;
             monster.defense = nagaCharacter.defense;
-
+            
             break;
         case 2:
-            document.querySelector('.health-now-monster').style.width = `${(skullMageCharacter.life * 100) / skullMageCharacter.maxLife}%`;
-            document.querySelector('.monster-choice .numbered-life').innerHTML = `${skullMageCharacter.life} / ${skullMageCharacter.maxLife}`
+            
             monster.name = 'Skull Mage'
             monster.life = skullMageCharacter.life;
             monster.maxLife = skullMageCharacter.maxLife;
             monster.attack = skullMageCharacter.attack;
             monster.defense = skullMageCharacter.defense;
-
+            
+            
             break;
         case 3:
-            document.querySelector('.health-now-monster').style.width = `${(mutantSharkCharacter.life * 100) / mutantSharkCharacter.maxLife}%`;
-            document.querySelector('.monster-choice .numbered-life').innerHTML = `${mutantSharkCharacter.life} / ${mutantSharkCharacter.maxLife}`
+            
             monster.name = 'Mutant Shark'
             monster.life = mutantSharkCharacter.life;
             monster.maxLife = mutantSharkCharacter.maxLife;
             monster.attack = mutantSharkCharacter.attack;
             monster.defense = mutantSharkCharacter.defense;
-
+            
+    
             break;
     }
 
+
 }
 
+function updateHeroLife(){
+  document.querySelector('.health-now-hero').style.width = `${(hero.life * 100) / hero.maxLife}%`
+document.querySelector('.health-now-monster').style.width = `${(monster.life * 100) / monster.maxLife}%`
+}
 
 
