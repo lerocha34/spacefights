@@ -138,7 +138,7 @@ nagaSelectedMobile.addEventListener('click', choseNaga);
 let skullMageSelected = document.querySelector('.skullmage-button');
 skullMageSelected.addEventListener('click', choseSkullMage);
 let skullMagelectedMobile = document.querySelector('.skullmage-mobile-button');
-skullMageSelectedMobile.addEventListener('click', choseSkullMage);
+skullMagelectedMobile.addEventListener('click', choseSkullMage);
 
 let mutantSharkSelected = document.querySelector('.mutantshark-button');
 mutantSharkSelected.addEventListener('click', choseMutantShark);
