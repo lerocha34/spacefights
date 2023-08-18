@@ -213,3 +213,146 @@ display:None;
 footer{
     margin-top:30px;
 }
+
+@media (max-width: 320px){
+    .title-space{
+        align-items:flex-start;
+        letter-spacing: 3px;
+        font-size:20px;
+        margin-top:10px;
+    }
+    
+    .hero-choice{
+        letter-spacing:0px;
+        font-size:15px;
+        font-weight:bold;
+    }
+
+    .heroes{
+        display:none;
+    }
+
+    .heroes-mobile{
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+    .heroes-mobile .marine-image{
+        background-image: url('../images/marine.png');
+        width:80px;
+        height:80px;
+        background-position: top;
+        background-size:200%;
+        border-radius:50%;
+        border:2px solid #00f;
+        margin-left:10px;
+    }
+
+    .marine-title{
+        margin-bottom:5px;
+        margin-left:20px;
+    }
+
+    .heroes-mobile .magician-image{
+        background-image: url('../images/magician.png');
+        width:80px;
+        height:80px;
+        background-position:-50px 600px;
+        background-size:250%;
+        border-radius:50%;
+        border:2px solid #00f;
+
+        
+    }
+
+    .magician-template{
+        margin-left:-30px;
+    }
+
+    .magician-title{
+        margin-bottom:5px;
+    }
+
+    .heroes-mobile .warrior-image{
+        background-image: url('../images/warrior.png');
+        width:80px;
+        height:80px;
+        background-position: -30px 210px;
+        border-radius:50%;
+        border:2px solid #00f;
+        margin-top:10px;
+        background-size:280%;
+        margin-left:10px;
+    }
+
+    .warrior-title{
+        margin-top:15px;
+        margin-left:15px;
+        margin-bottom:5px;
+    }
+
+    .versus{
+        justify-content:flex-start
+    }
+    .versus-title{
+        font-size:19px;
+        letter-spacing:0;
+    }
+
+    /*monstros*/
+    .heroes-mobile .naga-image{
+        background-image: url('../images/naga.png');
+        width:80px;
+        height:80px;
+        background-position: 130px 160px;
+        background-size:220%;
+        border-radius:50%;
+        border:2px solid #f00;
+        margin-left:10px;
+    }
+
+    .naga-title{
+        margin-bottom:5px;
+        margin-left:25px;
+    }
+
+    .heroes-mobile .skullmage-image{
+        background-image: url('../images/skullmage.png');
+        width:80px;
+        height:80px;
+        background-position:-40px 580px;
+        background-size:250%;
+        border-radius:50%;
+        border:2px solid #f00;
+    
+
+        
+    }
+
+    .skullmage-template{
+        margin-left:-30px;
+    }
+
+    .skullmage-title{
+        margin-bottom:5px;
+    }
+
+    .heroes-mobile .mutantshark-image{
+        background-image: url('../images/mutantshark.png');
+        width:80px;
+        height:80px;
+        background-position: -40px 110px;
+        border-radius:50%;
+        border:2px solid #f00;
+        margin-top:10px;
+        background-size:200%;
+        margin-left:10px;
+    }
+
+    .mutantshark-title{
+        margin-top:15px;
+        margin-left:5px;
+        margin-bottom:5px;
+    }
+
+}

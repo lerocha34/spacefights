@@ -75,10 +75,18 @@ function choseWarrior() {
 
 let marineSelected = document.querySelector('.marine-button');
 marineSelected.addEventListener('click', choseMarine);
+let marineSelectedMobile = document.querySelector('.marine-mobile-button');
+marineSelectedMobile.addEventListener('click', choseMarine);
+
 let magicianSelected = document.querySelector('.magician-button');
 magicianSelected.addEventListener('click', choseMagician);
+let magicianSelectedMobile = document.querySelector('.magician-mobile-button');
+magicianSelectedMobile.addEventListener('click', choseMagician);
+
 let warriorSelected = document.querySelector('.warrior-button');
 warriorSelected.addEventListener('click', choseWarrior);
+let warriorSelectedMobile = document.querySelector('.warrior-mobile-button');
+warriorSelectedMobile.addEventListener('click', choseWarrior);
 
 
 //seleção de monstros
@@ -124,10 +132,18 @@ function choseMutantShark() {
 }
 let nagaSelected = document.querySelector('.naga-button');
 nagaSelected.addEventListener('click', choseNaga);
+let nagaSelectedMobile = document.querySelector('.naga-mobile-button');
+nagaSelectedMobile.addEventListener('click', choseNaga);
+
 let skullMageSelected = document.querySelector('.skullmage-button');
 skullMageSelected.addEventListener('click', choseSkullMage);
+let skullMagelectedMobile = document.querySelector('.skullmage-mobile-button');
+skullMageSelectedMobile.addEventListener('click', choseSkullMage);
+
 let mutantSharkSelected = document.querySelector('.mutantshark-button');
 mutantSharkSelected.addEventListener('click', choseMutantShark);
+let mutantSharkSelectedMobile = document.querySelector('.mutantshark-mobile-button');
+mutantSharkSelectedMobile.addEventListener('click', choseMutantShark);
 
 //trazer o log
 function checkCombatLog() {
