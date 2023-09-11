@@ -2,6 +2,8 @@
 
 Este repositório contém um projeto de um jogo web chamado "Space Fights", onde os jogadores podem escolher heróis e adversários para combates espaciais emocionantes. O projeto está sendo desenvolvido como uma prática de programação com HTML, CSS e JavaScript.
 
+https://lerocha34.github.io/spacefights/
+
 ## Sumário
 
 - [Introdução](#introdução)
